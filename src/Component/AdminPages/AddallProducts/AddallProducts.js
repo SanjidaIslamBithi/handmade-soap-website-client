@@ -18,7 +18,7 @@ const AddallProducts = () => {
       });
   };
   return (
-    <div className='pt-5 mb-5'>
+    <div className='pt-5 mb-5 add-allproducts'>
       <h2>Please Add a Products to all Product page:</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
