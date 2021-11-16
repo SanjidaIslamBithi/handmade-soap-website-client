@@ -26,6 +26,7 @@ import UpdateHomeProducts from './Component/AdminPages/UpdateHomeProducts/Update
 import MakeAdmin from './Component/AdminPages/MakeAdmin/MakeAdmin';
 import AllOrders from './Component/AdminPages/AllOrders/AllOrders';
 import Dashboard from './Component/Dashboard/Dashboard/Dashboard';
+import AboutUs from './Component/Home/AboutUs/AboutUs';
 
 function App() {
   return (
@@ -40,9 +41,12 @@ function App() {
             <Route path='/products'>
               <Products />
             </Route>
-            <Route path='/allproducts'>
-              <AllProducts />
+            <Route path='/aboutus'>
+              <AboutUs />
             </Route>
+            <PrivateRoute path='/allproducts'>
+              <AllProducts />
+            </PrivateRoute>
             <PrivateRoute path='/purchase/:productId'>
               <Purchase />
             </PrivateRoute>

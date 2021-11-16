@@ -83,9 +83,12 @@ const Purchase = () => {
             </Link> */}
           </div>
           <div className='col-md-9 col-sm-12 col-12 d-flex justify-content-between py-3'>
-            <h4 className='text-brand'>Product Buying</h4>
+          <h2 className='mt-5 pb-4 fw-bold'>
+              Product<span className=' text-info'>Buying inFo:</span>
+            </h2>
+            {/* <h4 className='text-brand'>Product Buying</h4> */}
             <div className='profile'>
-              <h4>{user.displayName}</h4>
+              <h4 className="fst-italic">{user.displayName}</h4>
             </div>
           </div>
         </div>

@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import ClientBarPage from '../ClientBarPage/ClientBarPage';
 import logo from '../../../images/logo.png';
-import { Button } from 'react-bootstrap';
+import { Alert, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 const ClientBookedList = () => {
   const { user } = useAuth();
   const [lists, setLists] = useState([]);
-
+  const [success, setSuccess] = useState(false);
   useEffect(() => {
     const url = ` https://salty-hamlet-93150.herokuapp.com/allbuyingproducts?email=${user.email}`;
 
@@ -25,7 +27,8 @@ const ClientBookedList = () => {
       .then((data) => {
         // console.log(data);
         if (data.deletedCount) {
-          alert('From bought product one item is deleted');
+          // alert('From bought product one item is deleted');
+          setSuccess(true);
           const remaining = lists.filter((product) => product._id !== id);
           setLists(remaining);
           console.log(remaining);
@@ -34,7 +37,7 @@ const ClientBookedList = () => {
   };
   return (
     <section className='booking-container'>
-      <div className='container'>
+      <div className='container shadow-lg'>
         <div className='row'>
           <div className='col-md-3 col-sm-12 col-12 py-3'>
             <Link to='/home'>
@@ -42,12 +45,15 @@ const ClientBookedList = () => {
             </Link>
           </div>
           <div className='col-md-9 col-sm-12 col-12 d-flex justify-content-between py-3'>
-            <h4 className='text-brand'>Booking List</h4>
+          <h2 className='mt-5 pb-4 fw-bold'>
+              Check the Booking List: <span className=' text-info'> total items {lists.length}</span>
+            </h2>
+            {/* <h4 className='text-brand'>Booking List</h4>
             <h4 className='text-brand'>
-              Number of Booked items: {lists.length}
-            </h4>
+              Number of Booked items: 
+            </h4> */}
             <div className='profile'>
-              <h4>{user.displayName}</h4>
+              <h4 className="fst-italic">{user.displayName}</h4>
             </div>
           </div>
         </div>
@@ -61,7 +67,7 @@ const ClientBookedList = () => {
           >
             <div className='row d-flex justify-content-between booking-card'>
               {lists.length === 0 && (
-                <div className='text-center'>
+                <div className='text-center shadow'>
                   <h4>You have no bookings!</h4>
                   <img src='' alt='loading' className='mt-3 w-25' />
                 </div>
@@ -100,6 +106,12 @@ const ClientBookedList = () => {
               ))}
             </div>
           </div>
+          {success && (
+            <Alert variant='danger'>
+              <FontAwesomeIcon icon={faCheckCircle} />
+              Deleted a product successfully{' '}
+            </Alert>
+          )}
         </div>
       </div>
     </section>

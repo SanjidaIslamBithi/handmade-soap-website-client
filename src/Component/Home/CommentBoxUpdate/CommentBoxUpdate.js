@@ -19,15 +19,34 @@ const CommentBoxUpdate = () => {
   //update change name
   const handleNameChange = (e) => {
     const updatedName = e.target.value;
-    const updatedfullComment = { name: updatedName, comment: comment.comment };
+    const updatedfullComment = {
+      name: updatedName,
+      comment: comment.comment,
+      raiting: comment.raiting,
+    };
     setComment(updatedfullComment);
   };
+  //raiting
+  const handleRaitingChange = (e) => {
+    const updatedRaiting = e.target.value;
+    const updatedfullComment = {
+      name: comment.name,
+      comment: comment.comment,
+      raiting: updatedRaiting,
+    };
+    setComment(updatedfullComment);
+  };
+
   //update change comment
   const handleCommentChange = (e) => {
     const updatedComment = e.target.value;
     // const updatedfullComment = { ...comment };
     // updatedfullComment.comment = updatedComment;
-    const updatedfullComment = { name: comment.name, comment: updatedComment };
+    const updatedfullComment = {
+      name: comment.name,
+      comment: updatedComment,
+      raiting: comment.raiting,
+    };
     setComment(updatedfullComment);
   };
   //setting changed comment
@@ -54,14 +73,17 @@ const CommentBoxUpdate = () => {
 
   return (
     <div>
-      <h1>Updating comment name:: comment:: id</h1>
+      {/* <h1>Updating comment name:: comment:: id</h1> */}
       <p className='fst-normal'>
-        {comment.name}:: {comment.comment}::
+        {comment.name}:: {comment.comment}::{comment.raiting}::
         {id}
       </p>
 
       <Container>
-        <h2>Comment Box</h2>
+      <h2 className='mt-5 pb-4 fw-bold'>
+              Please Update/Edit <span className=' text-info'>Your Comments</span>
+            </h2>
+        {/* <h2>Comment Box</h2> */}
         <Form onSubmit={handleUpdateComment}>
           <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
             <Form.Label>Name</Form.Label>
@@ -70,6 +92,15 @@ const CommentBoxUpdate = () => {
               onChange={handleNameChange}
               value={comment.name || ''}
               placeholder='name'
+            />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+            <Form.Label>Raiting</Form.Label>
+            <Form.Control
+              type='number'
+              onChange={handleRaitingChange}
+              value={comment.raiting || ''}
+              placeholder='raiting number'
             />
           </Form.Group>
           {/* comment */}

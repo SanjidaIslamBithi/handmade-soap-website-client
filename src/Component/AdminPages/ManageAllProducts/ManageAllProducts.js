@@ -1,11 +1,14 @@
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Row, Col, Container } from 'react-bootstrap';
+import { Button, Card, Row, Col, Container, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import logo from '../../../images/logo.png';
+import Dashboard from '../../Dashboard/Dashboard/Dashboard';
 //code to delete product from home page
 const ManageAllProducts = () => {
   const [topproducts, setTopproducts] = useState([]);
-
+  const [success, setSuccess] = useState(false);
   useEffect(() => {
     fetch('https://salty-hamlet-93150.herokuapp.com/topproducts')
       .then((res) => res.json())
@@ -20,7 +23,9 @@ const ManageAllProducts = () => {
       .then((data) => {
         console.log(data);
         if (data.deletedCount) {
-          alert('from top product one item is deleted');
+          // alert('from top product one item is deleted');
+          // alert('from top product one item is deleted');
+          setSuccess(true);
           const remaining = topproducts.filter(
             (topproduct) => topproduct._id !== id
           );
@@ -31,8 +36,16 @@ const ManageAllProducts = () => {
   return (
     <div>
       <Container>
-        <h2>Manage Services</h2>
+      <h2 className='mt-5 pb-4 fw-bold'> <span className=' text-info'>Deleting products </span> from home products page</h2>
         <Row className='row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-4 ms-5 g-5'>
+          <div>
+            <Col>
+              <Link to='/home'>
+                <img src={logo} alt='' className='logo w-25' />
+              </Link>
+              <Dashboard />
+            </Col>
+          </div>
           {topproducts.map((topproduct) => (
             <div key={topproduct._id}>
               <Col className='position-relative'>
@@ -59,6 +72,12 @@ const ManageAllProducts = () => {
             </div>
           ))}
         </Row>
+        {success && (
+          <Alert variant='success'>
+            <FontAwesomeIcon icon={faCheckCircle} />A product is deleted
+            successfully{' '}
+          </Alert>
+        )}
       </Container>
     </div>
   );

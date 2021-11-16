@@ -25,14 +25,14 @@ const Product = ({ product }) => {
                 </Card.Text>
               </Card.Body>
             </Card> */}
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem' }} className="shadow-lg">
           <Card.Img variant='top' src={img} />
           <Card.Body>
             <Card.Title>{name}</Card.Title>
             <Card.Text>{description}</Card.Text>
             <Card.Text>{price}</Card.Text>
             <Link to={`/purchase/${_id}`}>
-              <Button variant='primary'>
+              <Button variant='info'>
                 Buy now
                 <FontAwesomeIcon icon={faShoppingCart} />
               </Button>

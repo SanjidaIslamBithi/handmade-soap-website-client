@@ -12,7 +12,7 @@ const Dashboard = () => {
       {!admin && <h4 className='text-danger'>Sorry! You are not admin. </h4>}
       {admin && (
         <div>
-          <Nav className='justify-content-start flex-column'>
+          <Nav className='flex-column'>
             <Nav.Link as={Link} to='/addproducts'>
               Add top products for home
             </Nav.Link>
@@ -28,7 +28,7 @@ const Dashboard = () => {
             <Nav.Link as={Link} to='/makeadmin'>
               Make admin
             </Nav.Link>
-            <Nav.Link as={Link} to='/login'>
+            <Nav.Link as={Link} to='/allorderproduct'>
               See all orderd
             </Nav.Link>
             <Nav.Link>Disabled</Nav.Link>

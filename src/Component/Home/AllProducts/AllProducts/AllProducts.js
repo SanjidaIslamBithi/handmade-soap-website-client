@@ -11,11 +11,11 @@ const AllProducts = () => {
   }, []);
   return (
     <div id='allproducts'>
-      <h2>
-        All <span className='primary'>Products</span>
+      <h2 className='mt-5 pb-4  fs-3 fw-bold'>
+        Explore<span className=' text-info'> Here</span>
       </h2>
 
-      <Row xs={1} md={3} className='mt-4 ms-5 g-5'>
+      <Row xs={1} md={3} className='mt-4 ms-5 g-5 mb-5'>
         {products.map((product) => (
           <Allproduct key={product._id} product={product}></Allproduct>
         ))}

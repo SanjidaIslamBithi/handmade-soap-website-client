@@ -27,9 +27,9 @@ const MakeAdmin = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.modifiedCount) {
-          console.log(data);
+          // console.log(data);
           //   setEmail('');
           setSuccess(true);
         }
@@ -81,7 +81,7 @@ const MakeAdmin = () => {
                 className='form-group col-md-6'
                 style={{ paddingTop: '31px' }}
               >
-                <button type='submit' className='btn btn-success'>
+                <button type='submit' className='btn btn-info'>
                   Submit
                 </button>
               </div>

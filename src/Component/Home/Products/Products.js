@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 import Product from '../Product/Product';
 const Products = () => {
@@ -11,15 +11,16 @@ const Products = () => {
   // }, []);
   return (
     <div id='products'>
-      <h2>
-        Top <span className='primary'>Products</span>
-      </h2>
-
-      <Row xs={1} md={3} className='mt-4 ms-5 g-5'>
+     <h2 className='mt-5 pb-4 fw-bold'>
+      Best Selling <span className=" text-info">Products</span>
+            </h2>
+      <Row xs={1} md={3} className='mt-4 ms-5  g-5 mb-5'>
+        
         {products.map((product) => (
           <Product key={product._id} product={product}></Product>
         ))}
       </Row>
+    
     </div>
   );
 };

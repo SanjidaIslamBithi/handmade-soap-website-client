@@ -33,12 +33,15 @@ const Navigation = () => {
             <Nav className='me-auto'>
               <Nav.Link href='/home'>Home</Nav.Link>
               <Nav.Link as={HashLink} to='/home#products'>
-                TopProducts
+                BestSellingProducts
               </Nav.Link>
               <Nav.Link as={Link} to='/allproducts'>
-                AllProducts
+                ExploreAllOurproducts
               </Nav.Link>
-              <NavDropdown title='Dropdown' id='collasible-nav-dropdown'>
+              <Nav.Link as={Link} to='/aboutus'>
+                AboutUs
+              </Nav.Link>
+              {/* <NavDropdown title='Dropdown' id='collasible-nav-dropdown'>
                 <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
                 <NavDropdown.Item href='#action/3.2'>
                   Another action
@@ -50,7 +53,7 @@ const Navigation = () => {
                 <NavDropdown.Item href='#action/3.4'>
                   Separated link
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav>
             <Nav>
               <Navbar.Text>
@@ -67,9 +70,10 @@ const Navigation = () => {
                 <div>
                   {/* <Dashboard></Dashboard> */}
                   <Nav.Link as={Link} to='/dashboard'>
-                    <Button color='inherit'>Dashboard</Button>
+                    <Button color='inherit' variant='secondary'>Admin</Button>
                   </Nav.Link>
-                  <Button onClick={logout}>Logout</Button>
+                  <Button onClick={logout}
+                  variant='secondary'>Logout</Button>
                 </div>
               ) : (
                 <Nav.Link as={Link} to='/login'>
